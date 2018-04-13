@@ -1,0 +1,4 @@
+/* global bookmarkit */
+$(()=> {
+	bookmarkit.bindEventListeners();
+});

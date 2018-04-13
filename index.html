@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bookmark-it</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+	<link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+<div class="container">
+	<div class="error"></div>
+	<h1>Bookmark-it</h1>
+	<div class="controls">
+		<form id="js-bm-search-form">
+			<button type="submit" class="ctrl-btn js-add-bm">Add BM</button>
+			<div class="ctrl-search">
+				<input type="text" name="bm-list-search-entry" class="js-bm-list-search-entry" placeholder="Search e.g., broccoli">
+			</div>
+		</form>
+	</div>
+	<div class="create-bm-modal js-create-bm-modal">
+		<div class="create-bm-modal-header">
+			<header><h3>Create Bookmark</h3></header>
+			<button class="close-btn">X</button>
+		</div>
+		<form id="js-create-bm-form">
+			<div class="top">
+				<input type="text" name="title" class="js-bm-title" placeholder="title">
+				<input type="text" name="url" class="js-bm-url" placeholder="url">
+			</div>
+			<div class="middle">
+				<input type="text" name="description" class="js-bm-description" placeholder="provide a description">
+			</div>
+			<div class="bottom">
+				<radiogroup>
+					<label><input type="radio" value="1" id="bm-rating-1" name="rate">1</label>
+					<label><input type="radio" value="2" id="bm-rating-2" name="rate">2</label>
+					<label><input type="radio" value="3" id="bm-rating-3" name="rate">3</label>
+					<label><input type="radio" value="4" id="bm-rating-4" name="rate">4</label>
+					<label><input type="radio" value="5" id="bm-rating-5" name="rate">5</label>
+				</radiogroup>
+			</div>
+			<button class="create-btn"type="submit">Add</button>
+		</form>
+	</div>
+	<ul class="bm-list js-bm-list">
+		<!-- <li class="empty__message">You Currently Have No Bookmarks</li> -->
+	</ul>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="scripts/api.js"></script>
+<script type="text/javascript" src="scripts/store.js"></script>
+<script type="text/javascript" src="scripts/bookmarkit.js"></script>
+<script type="text/javascript" src="scripts/index.js"></script>
+</body>
+</html>

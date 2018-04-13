@@ -1,0 +1,94 @@
+* {
+	box-sizing: border-box;
+  }
+  
+  body {
+	font-family: 'Roboto', sans-serif;
+  }
+  
+  button, input[type="text"] {
+	padding: 5px;
+  }
+  
+  button:hover {
+	cursor: pointer;
+  }
+  
+  .hidden {
+	display: none;
+  }
+  
+  .container {
+	text-align: center;
+	max-width: 600px;
+	margin: 0 auto;
+  }
+
+  .create-bm-modal {
+    display: none;
+    border: 2px solid black;
+    padding: 5px;
+  }
+
+  .create-bm-modal-header {
+    justify-content: space-between;
+  }
+
+  .create-bm-modal > header > h3{
+    color: black;
+    margin: 0;
+    text-align: left;
+    right: 13rem;
+    padding:5px;
+  }
+
+  li {
+	list-style: none;
+  }
+
+  .empty__message {
+	  font-size: 12px;
+  }
+
+  .bookmark-list-item {
+	  border: 2px solid black;
+	  border-radius: 2px;
+	  background: darkgray;
+  }
+
+  .ctrl-btn {
+    display: inline-block;
+  }
+
+  .ctrl-search {
+    display: inline-block;
+  }
+
+  .li-controls {
+    display: block; 
+    position: relative;
+    right: 0;
+    justify-content: space-between;
+  }
+
+  .li-ctrl-btn {
+    margin: 0;
+    padding: .25em;
+  }
+
+  .bookmark {
+    display: block;
+  }
+
+  .top, .middle, .bottom {
+    padding: 5px;
+    display: flex;
+  }
+  .top > input {
+    padding: 5px;
+  }
+
+  input[name='bm-url'] {
+    margin: 0 0 0 1rem;
+  }
+
