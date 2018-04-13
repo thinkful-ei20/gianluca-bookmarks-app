@@ -198,7 +198,7 @@ const bookmarkit = (function() {
 			const desc = $li.find(':input[name=description]').val();
 			const rating = $li.find(':input[name=rate]:checked').val();
 			if( bookmark.desc !== desc || bookmark.rating !== rating) {
-				api.updateBookmark(id, {desc:desc, rating:rating}, (response) =>{
+				api.updateBookmark(id, {desc:desc, rating:rating}, (response) => {
 					store.findAndUpdate(id, {desc:desc, rating:rating});
 					render();
 				}, (error) => {
