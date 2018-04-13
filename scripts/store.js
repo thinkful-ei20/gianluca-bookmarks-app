@@ -17,13 +17,25 @@ const store = (function(){
 		const bm = this.bookmarks.find(bm => bm.id === id);
 		Object.assign(bm, newData);
 	}
+
+	function setSearchTerm(term) {
+		this.searchTerm = term;
+	}
+
+	function setError(error) {
+		this.errorMessage = error;
+	}
 	return {
 		bookmarks:[],
 		sortBy:'',
+		searchText:'',
 		errorMessage:'',
+		modal:'',
 		add,
 		findAndDelete,
 		findAndUpdate,
 		findById,
+		setSearchTerm,
+		setError,
 	};
 }());

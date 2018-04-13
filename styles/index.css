@@ -6,7 +6,7 @@
 	font-family: 'Roboto', sans-serif;
   }
   
-  button, input[type="text"] {
+  button {
 	padding: 5px;
   }
   
@@ -22,6 +22,10 @@
 	text-align: center;
 	max-width: 600px;
 	margin: 0 auto;
+  }
+
+  .bm-list{
+    padding:0;
   }
 
   .create-bm-modal {
@@ -43,7 +47,8 @@
   }
 
   li {
-	list-style: none;
+  list-style: none;
+  margin-bottom: 1rem;
   }
 
   .empty__message {
@@ -80,15 +85,45 @@
     display: block;
   }
 
-  .top, .middle, .bottom {
-    padding: 5px;
-    display: flex;
+  .bm-desc {
+    display: inline-block;
+    width:80%;
+    padding: 0.5rem;
+    margin: 1rem;
+    resize: none;
   }
+
+  .close-btn {
+    float: right;
+  }
+
+  .top, .middle, .bottom {
+    display: flex;
+    padding: 0.5rem;
+  }
+
   .top > input {
-    padding: 5px;
+    display: inline-block;
   }
 
   input[name='bm-url'] {
     margin: 0 0 0 1rem;
   }
+
+  .edit-rd-grp {
+    display: inline-block;
+  }
+  .edit-rd-grp > label {
+    display: inline-block;
+  }
+
+  .error-button {
+    background-color:lightcoral;
+    padding: 20px;
+    border: 1px solid red;
+    position: fixed;
+    right: 2.5rem;
+    top: 3rem;
+  }
+
 

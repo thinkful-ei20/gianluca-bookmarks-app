@@ -18,22 +18,29 @@
 			<div class="ctrl-search">
 				<input type="text" name="bm-list-search-entry" class="js-bm-list-search-entry" placeholder="Search e.g., broccoli">
 			</div>
+			<select class="ctrl-slct js-sortby">
+				<option value="rate-asc" selected>rating (ascending)</option>
+				<option value="rate-desc">rating (descending)</option>
+				<option value="alpha-asc">alphabetical (ascending)</option>
+				<option value="alpha-desc">alphabetical (descending)</option>
+			</select>
 		</form>
 	</div>
 	<div class="create-bm-modal js-create-bm-modal">
+		<button class="close-btn">X</button>
 		<div class="create-bm-modal-header">
 			<header><h3>Create Bookmark</h3></header>
-			<button class="close-btn">X</button>
 		</div>
 		<form id="js-create-bm-form">
 			<div class="top">
-				<input type="text" name="title" class="js-bm-title" placeholder="title">
-				<input type="text" name="url" class="js-bm-url" placeholder="url">
+				<input type="text" name="title" class="js-bm-title" placeholder="Bookmark Title" required>
+				<input type="text" name="url" class="js-bm-url" placeholder="(example https://url)" required>
 			</div>
 			<div class="middle">
-				<input type="text" name="description" class="js-bm-description" placeholder="provide a description">
+				<textarea name="description" class="bm-desc js-bm-description" placeholder="provide a description"></textarea>
 			</div>
 			<div class="bottom">
+				<label>Rating: </label>
 				<radiogroup>
 					<label><input type="radio" value="1" id="bm-rating-1" name="rate">1</label>
 					<label><input type="radio" value="2" id="bm-rating-2" name="rate">2</label>
