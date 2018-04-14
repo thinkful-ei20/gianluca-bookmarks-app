@@ -28,7 +28,7 @@ const store = (function(){
 	return {
 		bookmarks:[],
 		sortBy:'',
-		searchText:'',
+		searchTerm:'',
 		errorMessage:'',
 		modal:'',
 		add,

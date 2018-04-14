@@ -24,6 +24,7 @@ const bookmarkit = (function() {
 		return html;
 	}
 	function generateExpandedBookmark(bm) {
+		console.log(`EDIT:'${bm.edit}`,`EXP ${bm.expanded}`);
 		if(bm.edit) {
 			return `<li class="bookmark-list-item" id="${bm.id}">
 			<div class="li-controls">
@@ -76,7 +77,7 @@ const bookmarkit = (function() {
 
 	function generateBookmarkString(bookmarks) {
 		const bms = bookmarks.
-			filter(bm => store.searchText.length === 0 || bm.title.indexOf(store.searchText) > -1).
+			filter(bm => store.searchTerm.length === 0 || bm.title.indexOf(store.searchTerm) > -1).
 			sort((a,b) => {
 				switch(store.sortBy) {
 				case 'rate-asc':
@@ -87,10 +88,11 @@ const bookmarkit = (function() {
 					return b.rating - a.rating;
 				case 'alpha-asc':
 					console.log('made it to alpha-asc');
-					return a.title.toUpperCase() - b.title.toUpperCase();
+					return a.title.toUpperCase() > b.title.toUpperCase();
 				case 'alpha-desc':
 					console.log('made it to alpha-desc');
-					return b.title.toUpperCase() - a.title.toUpperCase();
+					console.log(b.title, a.title);
+					return b.title.toUpperCase() > a.title.toUpperCase();
 				default:
 					return 0;
 				}
@@ -101,7 +103,7 @@ const bookmarkit = (function() {
 	function handleAddBookmark() {
 		$('.js-add-bm').on('click', (event) => {
 			event.preventDefault();
-			console.log('click');
+			//console.log('click');
 			store.modal = true;
 			render();
 		});
@@ -197,17 +199,20 @@ const bookmarkit = (function() {
 			const bookmark = store.findById(id);
 			const desc = $li.find(':input[name=description]').val();
 			const rating = $li.find(':input[name=rate]:checked').val();
-			if( bookmark.desc !== desc || bookmark.rating !== rating) {
+			//console.log(desc, rating);
+			//console.log(bookmark.desc, bookmark.rating);
+			if( bookmark.desc !== desc || bookmark.rating !== parseInt(rating)) {
 				api.updateBookmark(id, {desc:desc, rating:rating}, (response) => {
 					store.findAndUpdate(id, {desc:desc, rating:rating});
+					bookmark.edit = false;
 					render();
 				}, (error) => {
-					store.setError(error.responseJSON.message)
+					store.setError(error.responseJSON.message);
 					render();
 				});
 			} else {
+				bookmark.edit = false;
 				store.setError('No Changes Made');
-				store.edit = false;
 				store.modal = false;
 				render();
 			}
@@ -223,15 +228,14 @@ const bookmarkit = (function() {
 
 	function handleSearchBookmark() {
 		$('.js-bm-list-search-entry').keyup( event => {
-			const searchText = $(event.currentTarget).val();
-			store.setSearchTerm(searchText);
+			const searchTerm = $(event.currentTarget).val();
+			store.setSearchTerm(searchTerm);
 			render();
 		});
 	}
 
 	function handleCloseCreateButton() {
 		$('.close-btn').on('click', (event) => {
-			console.log('click');
 			store.modal = false;
 			render();
 		});
@@ -245,7 +249,6 @@ const bookmarkit = (function() {
 	}
 
 	function render() {
-		console.log('`render` ran');
 		store.modal ? $('.js-create-bm-modal').css('display','block') : $('.js-create-bm-modal').css('display','none');
 		store.bookmarks.length === 0 ? $('.js-bm-list').html('<p>There are no bookmarks</p>') : $('.js-bm-list').html(generateBookmarkString(store.bookmarks));
 		store.errorMessage !== '' ? $('.error').html(generateErrorMessage(store.errorMessage)) : $('.error').html('');
